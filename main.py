@@ -2,33 +2,25 @@
 ETL-Query script
 """
 
-import sys
+import fire
 from mylib.extract import extract
 from mylib.transform_load import load
 from mylib.query import query
 
 
-def main():
-    try:
+def main(query_statement):
         # Extract
         print("Extracting data...")
-        file_path = extract()
-        print(f"File extracted to {file_path}")
+        extract
 
         # Transform and load
         print("Transforming and loading data...")
-        load(file_path)
-        print("Data loaded into SQLite3 database")
+        load()
 
         # Query
         print("Querying data...")
-        query()
-        print("Query complete")
-
-    except Exception as e:
-        print(e)
-        sys.exit(1)
-
+        query(query_statement)
+        
 
 if __name__ == "__main__":
     main()

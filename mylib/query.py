@@ -3,14 +3,11 @@
 import sqlite3
 
 
-def query():
-    """Read data from the database for the top 10 rows of the 'cost' table."""
+def query(query_statement):
+    """Executes passed query and returns the result"""
     conn = sqlite3.connect("cost.db")
     cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM cost LIMIT 10"
-    )  # Use 'cost' as the table name
-    print("Top 10 rows of the 'cost' table:")
+    cursor.execute(query_statement)
     print(cursor.fetchall())
     conn.close()
     return "Success"
