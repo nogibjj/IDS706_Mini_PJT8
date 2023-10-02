@@ -9,18 +9,18 @@ from mylib.query import query
 
 
 def main(query_statement):
-        # Extract
-        print("Extracting data...")
-        extract
+    # Extract
+    print("Extracting data...")
+    extract
 
-        # Transform and load
-        print("Transforming and loading data...")
-        load()
+    # Transform and load
+    print("Transforming and loading data...")
+    load()
 
-        # Query
-        print("Querying data...")
-        query(query_statement)
-        
+    # Query
+    print("Querying data...")
+    query(query_statement)
+
 
 if __name__ == "__main__":
-    main()
+    fire.Fire(main)
