@@ -14,6 +14,16 @@ lint:
 	#ruff linting is 10-100X faster than pylint
 	ruff check *.py mylib/*.py
 
+extract:
+	python mylib/extract.py
+
+transform_load:
+	python mylib/transform_load.py
+
+query:
+	python mylib/query.py
+
+
 container-lint:
 	docker run --rm -i hadolint/hadolint < Dockerfile
 
@@ -21,5 +31,6 @@ refactor: format lint
 
 deploy:
 	#deploy goes here
+
 		
 all: install lint test format deploy
