@@ -1,9 +1,16 @@
+[![CI](https://github.com/nogibjj/IDS706_Mini_PJT_5/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini_PJT_5/actions/workflows/cicd.yml)
+
 ## Overview
-This project aims to create a SQL database, which is an ETL-Query pipeline while using SQLite to perform CRUD operations. Here I use SQLite around the Python fire library. The data contains the cost of living for each country and their ranks. 
+This project's objective is to establish an ETL-Query pipeline (Extract, Transfer, and Load), utilizing SQLite to execute CRUD operations. The implementation leverages SQLite in conjunction with the Python Fire library. The dataset includes information on the cost of living and rankings for each country. 
+
+## Query Output
+The SQL query output below demonstrates the successful operation of my repository with SQLite, confirming that the 'cost' database functions as intended.
+
+![image](https://github.com/nogibjj/IDS706_Mini_PJT_5/assets/141780408/88153a45-81e2-43de-bccd-4cc3adf30f92)
 
 
 ## Github Actions
-![image](https://github.com/nogibjj/IDS706_Mini_PJT_5/assets/141780408/adc97296-735e-456b-ab27-ef75f61aaf88)
+![image](https://github.com/nogibjj/IDS706_Mini_PJT_5/assets/141780408/5bef5e40-a5a7-469f-a7ce-12b01242f05e)
 
 
 ## Visualization of Process 
