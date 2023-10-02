@@ -21,12 +21,12 @@ def load(dataset="data/cost.csv"):
 
     create_table_query = (
            "CREATE TABLE cost ("
-            id INTEGER PRIMARY KEY,
-            date TEXT,
-            item TEXT,
-            cost REAL,
-            category TEXT,
-            key TEXT
+            '"date" TEXT,'
+            'item TEXT,'
+            'cost REAL,'
+            'category TEXT,'
+            'key TEXT'
+            ")"
     )
     c.execute(create_table_query)
 
