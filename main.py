@@ -2,10 +2,11 @@
 ETL-Query script
 """
 
-import sys 
+import sys
 from mylib.extract import extract
 from mylib.transform_load import load
 from mylib.query import query
+
 
 def main():
     try:
@@ -13,7 +14,7 @@ def main():
         print("Extracting data...")
         file_path = extract()
         print(f"File extracted to {file_path}")
-        
+
         # Transform and load
         print("Transforming and loading data...")
         load(file_path)
@@ -28,5 +29,6 @@ def main():
         print(e)
         sys.exit(1)
 
+
 if __name__ == "__main__":
-    main()  
+    main()

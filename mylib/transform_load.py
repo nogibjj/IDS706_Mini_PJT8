@@ -21,7 +21,7 @@ def load(dataset="data/cost.csv"):
 
     create_table_query = (
            "CREATE TABLE cost ("
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY,
             date TEXT,
             item TEXT,
             cost REAL,
