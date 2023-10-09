@@ -96,7 +96,7 @@ def test_general_query():
             "python",
             "main.py",
             "general_query",
-            "SELECT * FROM youtubers WHERE rank = 1,
+            "SELECT * FROM youtubers WHERE rank = 1"
         ],
         capture_output=True,
         text=True,
