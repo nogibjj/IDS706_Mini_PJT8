@@ -6,7 +6,6 @@ import subprocess
 
 
 def test_extract():
-    """tests extract()"""
     result = subprocess.run(
         [
             "python", "main.py", "extract"
@@ -20,7 +19,6 @@ def test_extract():
 
 
 def test_transform_load():
-    """tests transform_load()"""
     result = subprocess.run(
         [
             "python", "main.py", "transform_load"
@@ -34,24 +32,18 @@ def test_transform_load():
 
 
 def test_general_query():
-    """tests general_query()"""
-    query = """
-    SELECT 
-        username, categories, country, AVG(visits), AVG(likes), AVG(comments)
-    FROM
-        y1 INNER JOIN y2 ON y1.id = y2.id
-    GROUP BY
-        categories
-    ORDER BY 
-        visits DESC
-    LIMIT 15
-    """
     result = subprocess.run(
         [
             "python", 
             "main.py", 
-            "general_query", 
-            query
+            "general_query",
+            """SELECT y1.username, y1.categories, y1.country, 
+               AVG(y2.visits), AVG(y2.likes), AVG(y2.comments)
+               FROM default.youtubers1DB y1
+               JOIN default.youtubers2DB y2 ON y1.id = y2.id
+               GROUP BY y1.country
+               ORDER BY AVG(y2.visits) DESC
+               LIMIT 15""", 
         ],
         capture_output=True,
         text=True,
@@ -64,3 +56,4 @@ if __name__ == "__main__":
     test_extract()
     test_transform_load()
     test_general_query()
+    
