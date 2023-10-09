@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 
 def extract(
-    url="https://github.com/fivethirtyeight/data/blob/master/hate-crimes/hate_crimes.csv",
+    url="https://github.com/fivethirtyeight/data/blob/master/hate-crimes/hate_crimes.csv?raw=true",
     file_path="data/hate_crimes.csv",
     directory="data",
 ):
