@@ -22,14 +22,11 @@ def handle_arguments(args):
             "read_data",
         ],
     )
-    args = parser.parse_args(args[:1])
-    print(args.action)
-
+    
     if args.action == "general_query":
         parser.add_argument("query")
-
-    # parse again with ever
-    return parser.parse_args(sys.argv[1:])
+    
+    return parser.parse_args(args)
 
 
 def main():
