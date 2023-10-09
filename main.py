@@ -1,4 +1,3 @@
-"""handles cli commands"""
 import sys
 import argparse
 from mylib.extract import extract
@@ -22,15 +21,14 @@ def handle_arguments(args):
             "read_data",
         ],
     )
-    
-    if args.action == "general_query":
+
+    if args[0] == "general_query":
         parser.add_argument("query")
-    
+
     return parser.parse_args(args)
 
 
 def main():
-    """handles all the cli commands"""
     args = handle_arguments(sys.argv[1:])
 
     if args.action == "extract":

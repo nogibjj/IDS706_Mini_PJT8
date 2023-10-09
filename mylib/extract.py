@@ -19,7 +19,7 @@ def extract(
 
     # Split the DataFrame for the following work in the Transform step 
     df1 = df.iloc[:, :5]
-    df2 = df.iloc[:, 5:]
+    df2 = df.iloc[:, [1,5,6,7,8]]
 
     df1.to_csv(os.path.join(directory, "youtubers1.csv"), index=False)
     df2.to_csv(os.path.join(directory, "youtubers2.csv"), index=False)
