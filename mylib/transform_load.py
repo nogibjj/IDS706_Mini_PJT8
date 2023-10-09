@@ -69,11 +69,17 @@ def load(dataset1="data/hate_crimes1.csv", dataset2="data/hate_crimes2.csv"):
             # Insert data into the tables
             for _, row in df1.iterrows():
                 convert = tuple(row)
-                c.execute("INSERT INTO hate_crimes1DB VALUES (?, ?, ?, ?, ?, ?)", convert)
+                c.execute(
+                    "INSERT INTO hate_crimes1DB VALUES (?, ?, ?, ?, ?, ?)", 
+                    convert
+                    )
 
             for _, row in df2.iterrows():
                 convert = tuple(row)
-                c.execute("INSERT INTO hate_crimes2DB VALUES (?, ?, ?, ?, ?, ?)", convert)
+                c.execute(
+                    "INSERT INTO hate_crimes2DB VALUES (?, ?, ?, ?, ?, ?)", 
+                    convert
+                    )
 
             c.close()
 
