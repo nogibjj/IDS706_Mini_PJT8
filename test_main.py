@@ -1,6 +1,5 @@
 """
-Test goes here
-
+Tests for the main.py script.
 """
 
 import subprocess
@@ -19,7 +18,7 @@ def test_extract():
 
 
 def test_transform_load():
-    """tests transfrom_load"""
+    """tests transform_load()"""
     result = subprocess.run(
         ["python", "main.py", "transform_load"],
         capture_output=True,
@@ -30,85 +29,22 @@ def test_transform_load():
     assert "Transforming data..." in result.stdout
 
 
-def test_update_record():
-    """tests update_record"""
-    result = subprocess.run(
-        [
-            "python",
-            "main.py",
-            "update_record",
-            "1001",
-            "DingoMusic",
-            "Music",
-            "4680000",
-            "Korea",
-            "150000",
-            "8000",
-            "10800",
-            "https://www.youtube.com/@DingoMusic",
-        ],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    assert result.returncode == 0
-
-
-def test_delete_record():
-    """tests delete_record"""
-    result = subprocess.run(
-        ["python", "main.py", "delete_record", "1"],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    assert result.returncode == 0
-
-
-def test_create_record():
-    """tests create_record"""
-    result = subprocess.run(
-        [
-            "",
-            "main.py",
-            "create_record",
-            "1002",
-            "HiVic_ssam",
-            "Education",
-            "126000",
-            "Korea",
-            "50000",
-            "750",
-            "2030",
-            "https://www.youtube.com/@HiVic_ssam",
-        ],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    assert result.returncode == 0
-
-
 def test_general_query():
-    """tests general_query"""
+    """tests general_query()"""
+    query = """
+    SELECT
+        y1.username, y1.categories, y1.country, AVG(y2.visits), AVG(y2.likes), AVG(y2.comments)
+    FROM 
+        default.youtubers1DB AS y1
+    JOIN 
+        default.youtubers2DB AS y2
+    ON 
+        y1.id = y2.id
+    GROUP BY  
+        y1.categories;
+    """
     result = subprocess.run(
-        [
-            "python",
-            "main.py",
-            "general_query",
-            "SELECT * FROM youtubers WHERE rank = 1"
-        ],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    assert result.returncode == 0
-
-
-def test_read_data():
-    """tests read_data"""
-    result = subprocess.run(
-        ["python", "main.py", "read_data"],
+        ["python", "main.py", "general_query", query],
         capture_output=True,
         text=True,
         check=True,
@@ -119,8 +55,4 @@ def test_read_data():
 if __name__ == "__main__":
     test_extract()
     test_transform_load()
-    test_create_record()
-    test_read_data()
-    test_update_record()
-    test_delete_record()
     test_general_query()

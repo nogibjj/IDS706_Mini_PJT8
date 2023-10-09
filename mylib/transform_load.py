@@ -1,30 +1,41 @@
-"""Transform and Load data into the local SQLite3 database"""
+import os
+from databricks import sql
+import pandas as pd
+from dotenv import load_dotenv
 
-import sqlite3
-import csv
 
-def load(dataset="youtubers.csv"):
-    """Transforms and Loads data into the local SQLite3 database"""
+def load(data1="data/youtubers1.csv", data2="data/airline-safety2.csv"):
+    df1 = pd.read_csv(data1, delimiter=",", skiprows=1)
+    df2 = pd.read_csv(data2, delimiter=",", skiprows=1)
+    load_dotenv()
+    server_h = os.getenv("SERVER_HOSTNAME")
+    access_token = os.getenv("ACCESS TOKEN")
+    http_path = os.getenv("HTTP_PATH")
+    print(server_h, access_token, http_path)
+    with sql.connect(
+        server_hostname=server_h,
+        http_path=http_path,
+        access_token=access_token,
+    ) as connection:
+        c = connection.cursor()
+        
+        # c.execute("DROP TABLE IF EXISTS youtubers1DB")
+        c.execute("SHOW TABLES FROM default LIKE 'youtubers1*'")
+        result = c.fetchall()
+        if len(result) == 0:
+            c.execute("CREATE TABLE youtubers1DB (rank INT, name STRING, category STRING, subcribers INT, views INT)")            
+            for _, row in df2.iterrows():
+                convert = (_,) + tuple(row)
+                c.execute(f"INSERT INTO youtubers1DB VALUES {convert}")
 
-    print(os.getcwd())
-    payload = csv.reader(open(dataset, newline=""), delimiter=",")
-    conn = sqlite3.connect("youtubers.db")
-    c = conn.cursor()
-    c.execute("DROP TABLE IF EXISTS youtubers")  
-    c.execute(
-        '''CREATE TABLE youtubers (
-            rank INTEGER,
-            Username TEXT,
-            Categories TEXT,
-            Subscribers INTEGER,
-            Country TEXT,
-            Visits INTEGER,
-            Likes INTEGER,
-            Comments INTEGER,
-            Links TEXT
-        )'''
-    )   
-    c.executemany("INSERT INTO cost VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", payload)
-    conn.commit()
-    conn.close()
-    return "youtubers.db "
+        c.execute("SHOW TABLES FROM default LIKE 'youtubers2*'")
+        result = c.fetchall()
+
+        if not result:
+           c.execute("CREATE TABLE youtubers2DB (visits INT, likes INT, comments INT, links TEXT)")
+           for _, row in df2.iterrows():
+               convert = (_,) + tuple(row)
+               c.execute(f"INSERT INTO youtubers2DB VALUES {convert}")
+           c.close()
+                   
+        return "success"
