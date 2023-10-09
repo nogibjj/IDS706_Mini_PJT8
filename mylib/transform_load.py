@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 
 
 def load(dataset1="data/hate_crimes1.csv", dataset2="data/hate_crimes2.csv"):
-    df1 = pd.read_csv(dataset1, delimiter=",", skiprows=1)
-    df2 = pd.read_csv(dataset2, delimiter=",", skiprows=1)
+    df1 = pd.read_csv(dataset1, delimiter=",")
+    df2 = pd.read_csv(dataset2, delimiter=",")
     load_dotenv()
     server_h = os.getenv("SERVER_HOSTNAME")
     access_token = os.getenv("ACCESS_TOKEN")
