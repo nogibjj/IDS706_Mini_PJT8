@@ -7,7 +7,7 @@ import pandas as pd
 from dotenv import load_dotenv
 
 
-def load(dataset1="data/youtubers1.csv", dataset2="data/youtubers2.csv"):
+def load(dataset1="data/hate_crimes1.csv", dataset2="data/hate_crimes2.csv"):
     df1 = pd.read_csv(dataset1, delimiter=",", skiprows=1)
     df2 = pd.read_csv(dataset2, delimiter=",", skiprows=1)
     load_dotenv()
