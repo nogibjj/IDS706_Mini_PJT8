@@ -11,9 +11,13 @@ def load(dataset1="data/hate_crimes1.csv", dataset2="data/hate_crimes2.csv"):
     df1 = pd.read_csv(dataset1, delimiter=",")
     df2 = pd.read_csv(dataset2, delimiter=",")
     load_dotenv()
-    server_h = os.getenv("SERVER_HOSTNAME")
-    access_token = os.getenv("ACCESS_TOKEN")
-    http_path = os.getenv("HTTP_PATH")
+    try:
+        server_h = os.getenv("SERVER_HOSTNAME")
+        access_token = os.getenv("ACCESS_TOKEN")
+        http_path = os.getenv("HTTP_PATH")
+    except Exception as e:
+        print("Error loading environment variables:", str(e))
+
     with sql.connect(
         server_hostname=server_h,
         http_path=http_path,
