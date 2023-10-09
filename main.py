@@ -1,3 +1,4 @@
+"""handles cli commands"""
 import sys
 import argparse
 from mylib.extract import extract
@@ -8,6 +9,7 @@ from mylib.query import (
 
 
 def handle_arguments(args):
+    """add action based on inital calls"""
     parser = argparse.ArgumentParser(description="ETL-Query script")
     parser.add_argument(
         "action",
@@ -21,14 +23,18 @@ def handle_arguments(args):
             "read_data",
         ],
     )
+    args = parser.parse_args(args[:1])
+    print(args.action)
 
-    if args[0] == "general_query":
+    if args.action == "general_query":
         parser.add_argument("query")
 
-    return parser.parse_args(args)
+    # parse again with ever
+    return parser.parse_args(sys.argv[1:])
 
 
 def main():
+    """handles all the cli commands"""
     args = handle_arguments(sys.argv[1:])
 
     if args.action == "extract":
