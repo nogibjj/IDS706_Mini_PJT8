@@ -12,6 +12,7 @@ def load(data1="data/youtubers1.csv", data2="data/airline-safety2.csv"):
     access_token = os.getenv("ACCESS TOKEN")
     http_path = os.getenv("HTTP_PATH")
     print(server_h, access_token, http_path)
+
     with sql.connect(
         server_hostname=server_h,
         http_path=http_path,
@@ -19,12 +20,12 @@ def load(data1="data/youtubers1.csv", data2="data/airline-safety2.csv"):
     ) as connection:
         c = connection.cursor()
         
-        # c.execute("DROP TABLE IF EXISTS youtubers1DB")
         c.execute("SHOW TABLES FROM default LIKE 'youtubers1*'")
         result = c.fetchall()
+
         if len(result) == 0:
-            c.execute("CREATE TABLE youtubers1DB (rank INT, name STRING, category STRING, subcribers INT, views INT)")            
-            for _, row in df2.iterrows():
+            c.execute("CREATE TABLE youtubers1DB (rank INT, name STRING, category STRING, subscribers INT, views INT)")            
+            for _, row in df1.iterrows():
                 convert = (_,) + tuple(row)
                 c.execute(f"INSERT INTO youtubers1DB VALUES {convert}")
 
@@ -34,8 +35,11 @@ def load(data1="data/youtubers1.csv", data2="data/airline-safety2.csv"):
         if not result:
            c.execute("CREATE TABLE youtubers2DB (visits INT, likes INT, comments INT, links TEXT)")
            for _, row in df2.iterrows():
-               convert = (_,) + tuple(row)
+               convert = tuple(row)
                c.execute(f"INSERT INTO youtubers2DB VALUES {convert}")
            c.close()
                    
-        return "success"
+    return "success"
+
+if __name__ == "__main__":
+    load()
