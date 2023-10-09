@@ -35,16 +35,23 @@ def test_transform_load():
 
 def test_general_query():
     """tests general_query()"""
+    query = """
+    SELECT 
+        username, categories, country, AVG(visits), AVG(likes), AVG(comments)
+    FROM
+        y1 INNER JOIN y2 ON y1.id = y2.id
+    GROUP BY
+        categories
+    ORDER BY 
+        visits DESC
+    LIMIT 15
+    """
     result = subprocess.run(
         [
             "python", 
             "main.py", 
             "general_query", 
-            """SELECT username, categories, country, avg(visits), avg(likes), avg(comments) 
-            FROM y1 INNER JOIN y2 ON y1.id = y2.id 
-            GROUP BY categories
-            ORDER BY visits DESC
-            LIMIT 15""",
+            query
         ],
         capture_output=True,
         text=True,

@@ -9,7 +9,7 @@ def load(data1="data/youtubers1.csv", data2="data/airline-safety2.csv"):
     df2 = pd.read_csv(data2, delimiter=",", skiprows=1)
     load_dotenv()
     server_h = os.getenv("SERVER_HOSTNAME")
-    access_token = os.getenv("ACCESS TOKEN")
+    access_token = os.getenv("ACCESS_TOKEN")
     http_path = os.getenv("HTTP_PATH")
     print(server_h, access_token, http_path)
 
@@ -26,7 +26,7 @@ def load(data1="data/youtubers1.csv", data2="data/airline-safety2.csv"):
         if len(result) == 0:
             c.execute("CREATE TABLE youtubers1DB (rank INT, name STRING, category STRING, subscribers INT, views INT)")            
             for _, row in df1.iterrows():
-                convert = (_,) + tuple(row)
+                convert = tuple(row)
                 c.execute(f"INSERT INTO youtubers1DB VALUES {convert}")
 
         c.execute("SHOW TABLES FROM default LIKE 'youtubers2*'")
