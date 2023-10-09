@@ -3,8 +3,8 @@ import requests
 import pandas as pd
 
 def extract(
-    url="https://github.com/nogibjj/IDS706_Mini_PJT6/raw/main/youtubers.csv",
-    file_path="data/youtubers.csv",
+    url="https://github.com/fivethirtyeight/data/blob/master/hate-crimes/hate_crimes.csv",
+    file_path="data/hate_crimes.csv",
     directory="data",
 ):
 
@@ -18,10 +18,10 @@ def extract(
     df = pd.read_csv(file_path)
 
     # Split the DataFrame for the following work in the Transform step 
-    df1 = df.iloc[:, :5]
-    df2 = df.iloc[:, [1,5,6,7,8]]
+    df1 = df.iloc[:, :6]
+    df2 = df.iloc[:, [1,6,7,8,9,10]]
 
-    df1.to_csv(os.path.join(directory, "youtubers1.csv"), index=False)
-    df2.to_csv(os.path.join(directory, "youtubers2.csv"), index=False)
+    df1.to_csv(os.path.join(directory, "hate_crimes1.csv"), index=False)
+    df2.to_csv(os.path.join(directory, "hate_crimes2.csv"), index=False)
 
     return file_path

@@ -20,41 +20,44 @@ def load(dataset1="data/youtubers1.csv", dataset2="data/youtubers2.csv"):
         access_token=access_token,
     ) as connection:
         c = connection.cursor()
-        c.execute("SHOW TABLES FROM default LIKE 'youtubers1*'")
+        c.execute("SHOW TABLES FROM default LIKE 'hate_crimes1*'")
         result = c.fetchall()
         if not result:
             c.execute(
                 """
-                CREATE TABLE IF NOT EXISTS youtubers1DB (
-                    rank int,
-                    username string,
-                    categories string,
-                    subscribers int,
-                    country string,
+                CREATE TABLE IF NOT EXISTS hate_crimes1DB (
+                    state string,
+                    median_household_income int,
+                    share_unemployed_seasonal float,
+                    share_population_in_metro_areas float,
+                    share_non_citizen float,
+                    share_white_poverty float,
                 )
             """
             )
 
             for _, row in df1.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO youtubers1DB VALUES {convert}")
-        c.execute("SHOW TABLES FROM default LIKE 'youtubers2*'")
+                c.execute(f"INSERT INTO hate_crimes1DB VALUES {convert}")
+        c.execute("SHOW TABLES FROM default LIKE 'hate_crimes2*'")
         result = c.fetchall()
 
         if not result:
             c.execute(
                 """
-                CREATE TABLE IF NOT EXISTS youtubers2DB (
-                    visits int,
-                    likes int,
-                    comments int,
-                    links string,
+                CREATE TABLE IF NOT EXISTS hate_crimes2DB (
+                    state string,
+                    gini_index float,
+                    share_non_white float,
+                    share_voters_voted_trump float,
+                    hate_crimes_per_100k_splc float,
+                    avg_hatecrimes_per_100k_fbi float,
                 )
                 """
             )
             for _, row in df2.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO youtubers2DB VALUES {convert}")
+                c.execute(f"INSERT INTO hate_crimes2DB VALUES {convert}")
         c.close()
 
     return "success"
