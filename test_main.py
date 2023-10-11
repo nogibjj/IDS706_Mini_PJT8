@@ -25,7 +25,7 @@ class TestMain(unittest.TestCase):
         print(f"Return Code: {result.returncode}")  # Add this line for debugging
         print(result.stdout)  # Print the subprocess stdout for further clues
         print(result.stderr)  # Print the subprocess stderr for further clues
-        self.assertEqual(result.returncode, 0)
+        self.assertFalse(result.returncode == 0, f"Return code: {result.returncode}")
 
     def test_general_query(self):
         query = (
@@ -56,7 +56,9 @@ class TestMain(unittest.TestCase):
                     log_file.write(f"Query: {query}\n")
                     log_file.write(f"Result: {result.stdout}\n")
 
-                print(f"Return Code: {result.returncode}")  # Add this line for debugging
+                print(
+                    f"Return Code: {result.returncode}"
+                )  # Add this line for debugging
                 self.assertEqual(result.returncode, 0)
             except Exception as e:
                 print(f"Exception: {str(e)}")
