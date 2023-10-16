@@ -18,10 +18,11 @@ def extract(
     df = pd.read_csv(file_path)
 
     # Split the DataFrame for the following work in the Transform step 
-    df1 = df.iloc[:, :6]
-    df2 = df.iloc[:, [1,6,7,8,9,10]]
+    df1 = df.dropna()
+    df2 = df.iloc[:, :6]
+    df3 = df.iloc[:, [1,6,7,8,9,10]]
 
-    df1.to_csv(os.path.join(directory, "hate_crimes1.csv"), index=False)
-    df2.to_csv(os.path.join(directory, "hate_crimes2.csv"), index=False)
+    df2.to_csv(os.path.join(directory, "hate_crimes1.csv"), index=False)
+    df3.to_csv(os.path.join(directory, "hate_crimes2.csv"), index=False)
 
     return file_path
