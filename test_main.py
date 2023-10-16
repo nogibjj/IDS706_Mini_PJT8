@@ -25,7 +25,7 @@ class TestMain(unittest.TestCase):
         print(f"Return Code: {result.returncode}")  # Add this line for debugging
         print(result.stdout)  # Print the subprocess stdout for further clues
         print(result.stderr)  # Print the subprocess stderr for further clues
-        self.assertFalse(result.returncode == 0, f"Return code: {result.returncode}")
+        self.assertEqual(result.returncode, 0)
 
     def test_general_query(self):
         query = (
