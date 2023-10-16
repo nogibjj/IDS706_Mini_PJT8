@@ -8,3 +8,5 @@ The dataset is organized into two separate sets by dividing a specific column. T
 
 ## Test Result
 ![image](https://github.com/nogibjj/IDS706_Mini_PJT6/assets/141780408/36d9dcae-3166-4af8-b999-44a6005cc588)
+
+
