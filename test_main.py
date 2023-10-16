@@ -29,7 +29,7 @@ class TestMain(unittest.TestCase):
 
     def test_general_query(self):
         query = (
-            "SELECT a.state, " 
+            "SELECT a.state, "
             "AVG(a.median_household_income) AS average_median_household_income, "
             "AVG(a.share_unemployed_seasonal) AS average_share_unemployed_seasonal, "
             "a.share_population_in_metro_areas, "
