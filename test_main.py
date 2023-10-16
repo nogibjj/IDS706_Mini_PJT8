@@ -33,7 +33,7 @@ class TestMain(unittest.TestCase):
             "AVG(a.median_household_income), "
             "a.share_unemployed_seasonal, "
             "a.share_population_in_metro_areas, "
-            "b.gini_inex "
+            "b.gini_index "
             "FROM default.hate_crimes1DB AS a "
             "JOIN default.hate_crimes2DB AS b ON a.state = b.state "
             "ORDER BY b.gini_index "
