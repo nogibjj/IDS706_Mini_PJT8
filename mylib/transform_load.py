@@ -27,6 +27,7 @@ def load(dataset="data/hate_crimes1.csv", dataset2="data/hate_crimes2.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS hate_crimes1DB (
+                    id int,
                     state string,
                     median_household_income int,
                     share_unemployed_seasonal float,
@@ -48,6 +49,7 @@ def load(dataset="data/hate_crimes1.csv", dataset2="data/hate_crimes2.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS hate_crimes2DB (
+                    id int,
                     state string,
                     gini_index float,
                     share_non_white float,
