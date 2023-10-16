@@ -46,10 +46,12 @@ transform_load:
 	python main.py transform_load
 
 query:
-	python main.py general_query "SELECT y1.username, y1.categories, y1.country, \
-		AVG(y2.visits), AVG(y2.likes), AVG(y2.comments) \
-		FROM default.youtubers1DB AS y1 \
-		JOIN default.youtubers2DB AS y2 ON y1.rank = y2.rank \
-		GROUP BY y1.country \
-		ORDER BY AVG(y2.visits) DESC \
-		LIMIT 10;"
+	python main.py general_query "SELECT a.state, \
+            AVG(a.median_household_income), \
+            a.share_unemployed_seasonal, \
+            a.share_population_in_metro_areas, \
+            b.gini_inex \
+            FROM default.hate_crimes1DB AS a \
+            JOIN default.hate_crimes2DB AS b ON a.state = b.state \
+            ORDER BY b.gini_index \
+            LIMIT 10;"
