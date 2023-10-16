@@ -30,14 +30,15 @@ class TestMain(unittest.TestCase):
     def test_general_query(self):
         query = (
             "SELECT a.state, "
-            "AVG(a.median_household_income), "
+            "AVG(a.median_household_income) AS average_median_household_income, "
             "a.share_unemployed_seasonal, "
             "a.share_population_in_metro_areas, "
             "b.gini_index "
             "FROM default.hate_crimes1DB AS a "
             "JOIN default.hate_crimes2DB AS b ON a.state = b.state "
+            "GROUP BY a.state"
             "ORDER BY b.gini_index "
-            "LIMIT 10"
+            "LIMIT 5"
         )
 
         with tempfile.NamedTemporaryFile(mode="w", delete=False) as query_file:
