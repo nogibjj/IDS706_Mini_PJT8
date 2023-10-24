@@ -10,7 +10,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let file = File::open("heightweight.csv")?;
 
     let mut rdr = ReaderBuilder::new()
-        .delimiter(b';') 
+        .delimiter(b';')
         .has_headers(true)
         .from_reader(file);
 
@@ -38,8 +38,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let end_time = Instant::now();
 
     let elapsed_time = end_time.duration_since(start_time);
-    println!("Total execution time: {:?}", elapsed_time); 
-                                                         
+    println!("Total execution time: {:?}", elapsed_time);
+
     let mem_info = sys_info::mem_info().unwrap();
     println!(
         "Memory Usage: {}%",
