@@ -1,3 +1,4 @@
+[![CI](https://github.com/nogibjj/IDS706_Mini_PJT6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini_PJT6/actions/workflows/cicd.yml)
 
 ## Overview 
 This project is focused on establishing a cloud-based database and performing data queries through Azure Databricks. It involves the creation of a data pipeline and developing queries that encompass operations such as data joins and aggregations.
