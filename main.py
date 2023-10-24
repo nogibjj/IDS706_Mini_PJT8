@@ -9,7 +9,7 @@ def main():
     # start_time = time.time()
 
     # Load the dataset
-    df = pd.read_csv("heightweight.csv", sep=";")
+    df = pd.read_csv("heightweight.csv", sep=",")
 
     column_name = "Height"
 
