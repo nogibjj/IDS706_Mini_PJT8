@@ -1,0 +1,40 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Sleep for 80 seconds
+        run: sleep 80
+
+      - name: Install Python packages
+        run: make py_install
+
+      - name: Lint Python code
+        run: make py_lint
+
+      - name: Run Python tests
+        run: make py_test
+
+      - name: Format Python code
+        run: make py_format
+
+      - name: Pull latest changes
+        run: git pull
+
+      - name: generate_and_push
+        run: make generate_and_push
+
+      - name: Deploy
+        run: make py_deploy
