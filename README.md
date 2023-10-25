@@ -19,4 +19,10 @@ These steps will help facilitate the migration of the project from Python to Rus
 5. Create and Modify Cargo Files: Develop or modify the Cargo.toml files to match the functions and dependencies used in the Python project, aligning them with Rust requirements.
 
 ## Performance Comparison between Python and Rust 
+- **Rust Result**
+
 ![image](https://github.com/nogibjj/IDS706_Mini_PJT8/assets/141780408/ba005f86-97c5-4a08-a8a7-11f0fa7d400a)
+
+- **Python Result**
+
+![image](https://github.com/nogibjj/IDS706_Mini_PJT8/assets/141780408/456e951a-c4b0-4968-a298-3aa18bf313ad)
