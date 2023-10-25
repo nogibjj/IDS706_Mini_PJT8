@@ -15,7 +15,7 @@ These steps will help facilitate the migration of the project from Python to Rus
 1. Cargo Initialization: Use cargo init to create Rust project structures.
 2. Update Makefile: Modify the Makefile to include Rust-specific build and test commands.
 3. Create Separate YML Files: Develop separate YAML configuration files for Python and Rust to accommodate language-specific testing and deployment requirements.
-4. Adapt Python Function Libraries: Modify the Python function libraries based on the previous Mini Project (Mini PJT 5) to ensure compatibility with Rust.
+4. Adapt Python Function Libraries: Modify the Python function libraries based on the previous Mini Project to ensure compatibility with Rust.
 5. Create and Modify Cargo Files: Develop or modify the Cargo.toml files to match the functions and dependencies used in the Python project, aligning them with Rust requirements.
 
 ## Performance Comparison between Python and Rust 
