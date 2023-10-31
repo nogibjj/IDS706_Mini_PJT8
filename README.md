@@ -19,10 +19,18 @@ These steps will help facilitate the migration of the project from Python to Rus
 5. Create and Modify Cargo Files: Develop or modify the Cargo.toml files to match the functions and dependencies used in the Python project, aligning them with Rust requirements.
 
 ## Performance Comparison between Python and Rust 
-- **Rust Result**
+**1. Rust Result**
 
-![image](https://github.com/nogibjj/IDS706_Mini_PJT8/assets/141780408/ba005f86-97c5-4a08-a8a7-11f0fa7d400a)
+![image](https://github.com/nogibjj/IDS706_Mini_PJT8/assets/141780408/448e5dc2-2c48-4f04-ada9-4a118a3a6747)
+ - The elapsed time for rust is 38.28 milliseconds.
+ - The CPU usage is 0.00%
+ - The memory usage is 28.583778%
 
-- **Python Result**
+**2. Python Result**
 
-![image](https://github.com/nogibjj/IDS706_Mini_PJT8/assets/141780408/456e951a-c4b0-4968-a298-3aa18bf313ad)
+![image](https://github.com/nogibjj/IDS706_Mini_PJT8/assets/141780408/bc779146-863a-45b0-8d96-313bbda5aac8)
+- The elapsed time for python is 0.0936 seconds
+- The CPU usage for python is 5.9%
+- The memory usage is 28.6%
+
+In this test, Rust demonstrates lower CPU usage and faster execution times compared to Python. This performance advantage is evident in both the total execution time and CPU consumption. Memory usage is roughly equivalent between the two languages, with Rust having a slight edge. One possible explanation for this performance difference is the inherent characteristics of each language. Rust, being a compiled language with aggressive optimizations and a unique ownership system, often outperforms Python, an interpreted language, in raw computational tasks. Rust's design places a strong emphasis on zero-cost abstractions and efficient memory management without the need for a garbage collector. In contrast, Python prioritizes developer productivity and code readability, which can introduce more runtime overhead.
