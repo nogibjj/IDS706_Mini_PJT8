@@ -1,4 +1,7 @@
 # Mini PJT 8 - Python to Rust Migration Project
+[![Rust CI/CD](https://github.com/nogibjj/IDS706_Mini_PJT8/actions/workflows/rs_ci.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini_PJT8/actions/workflows/rs_ci.yml)
+[![Python CI/CD](https://github.com/nogibjj/IDS706_Mini_PJT8/actions/workflows/py_ci.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini_PJT8/actions/workflows/py_ci.yml)
+
 ## Overview 
 The objective of this project is to rewrite a Python script in the Rust programming language. The primary goals are to migrate the code while maintaining the same functionality for data processing tasks and to evaluate execution speed and resource usage between the two languages.
 
