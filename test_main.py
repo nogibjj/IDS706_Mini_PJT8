@@ -22,9 +22,9 @@ def test_compute_statistics():
     cpu_percent = psutil.cpu_percent()
     memory_info = psutil.virtual_memory()
 
-    print(f"Elapsed time: {elapsed_time:.4f} seconds")
-    print(f"CPU Usage: {cpu_percent}%")
-    print(f"Memory Usage: {memory_info.percent}%")
+    print("Elapsed time: {:.4f} seconds".format(elapsed_time))
+    print("CPU Usage: {}%".format(cpu_percent))
+    print("Memory Usage: {}%".format(memory_info.percent))
 
 
 if __name__ == "__main__":

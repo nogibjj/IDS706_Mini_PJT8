@@ -10,27 +10,27 @@ fn main() -> Result<(), Box<dyn Error>> {
     let file = File::open("heightweight.csv")?;
 
     let mut rdr = ReaderBuilder::new()
-        .delimiter(b';')
+        .delimiter(b',')
         .has_headers(true)
         .from_reader(file);
 
     let headers = rdr.headers()?;
-    let weight_index = headers
+    let height_index = headers
         .iter()
-        .position(|h| h == "Weight")
-        .ok_or("Weight column not found")?;
+        .position(|h| h == "Height")
+        .ok_or("Height column not found")?;
 
-    let mut weights: Vec<f64> = Vec::new();
+    let mut heights: Vec<f64> = Vec::new();
     for result in rdr.records() {
         let record = result?;
-        if let Some(weight_str) = record.get(weight_index) {
-            if let Ok(weight) = weight_str.parse::<f64>() {
-                weights.push(weight);
+        if let Some(height_str) = record.get(height_index) {
+            if let Ok(height) = height_str.parse::<f64>() {
+                heights.push(height);
             }
         }
     }
 
-    let stats = lib::compute_statistics(&weights);
+    let stats = lib::compute_statistics(&heights);
     println!("Mean: {}", stats.mean);
     println!("Median: {}", stats.median);
     println!("Standard Deviation: {}", stats.std);
